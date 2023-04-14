@@ -1,0 +1,38 @@
+public class RawMaterialsCalculator {
+
+    public static int calculateRawMaterials(int count, int width, int length, int productType, int materialType) {
+        double area = width * length;
+        double qualityRawMaterials;
+
+        switch(productType) {
+            case 1:
+                qualityRawMaterials = area * 1.1;
+                break;
+            case 2:
+                qualityRawMaterials = area * 2.5;
+                break;
+            case 3:
+                qualityRawMaterials = area * 8.43;
+                break;
+            default:
+                return -1;
+        }
+
+        double defectiveRate;
+
+        switch(materialType) {
+            case 1:
+                defectiveRate = 0.003;
+                break;
+            case 2:
+                defectiveRate = 0.0012;
+                break;
+            default:
+                return -1;
+        }
+
+        double totalRawMaterials = count * qualityRawMaterials / (1 - defectiveRate);
+
+        return (int)totalRawMaterials;
+    }
+}
